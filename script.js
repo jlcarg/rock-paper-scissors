@@ -1,8 +1,10 @@
-let humanScore = 0;
-let computerScore = 0;
-let roundNumber = 1;
+function getRandomInt (min, max) {
 
-// Create computer's random choice function
+    let randomNumber = Math.floor(Math.random() * (max - min) + min);
+    return randomNumber
+
+}
+
 function getComputerChoice () {
 
     let randomInt = getRandomInt(1, 4);
@@ -22,15 +24,6 @@ function getComputerChoice () {
 
 }
 
-function getRandomInt (min, max) {
-
-    let randomNumber = Math.floor(Math.random() * (max - min) + min);
-    return randomNumber
-
-}
-
-// Create user's choice function with input
-
 function  getHumanChoice () {
 
     let humanChoice =  prompt("Please select between Rock, Paper and Scissors:");
@@ -39,40 +32,64 @@ function  getHumanChoice () {
 
 }
 
+function playGame() {
 
+    let humanScore = 0;
+    let computerScore = 0;
+    let roundNumber = 1;
 
-// Write logic to play single round
+    function playRound (humanChoice, computerChoice) {
 
-function playRound (humanChoice, computerChoice) {
+        console.log(`Round number ${roundNumber}`)
+        console.log(`Human's choice is: ${humanChoice}`)
+        console.log(`Computer's choice is: ${computerChoice}`)
+    
+        if (humanChoice === computerChoice) {
+    
+            console.log(`It's a draw! You both chose ${humanChoice}!`);
+    
+        } else if (humanChoice === "Rock" && computerChoice === "Scissors" ||
+            humanChoice === "Paper"  && computerChoice === "Rock" ||
+            humanChoice === "Scissors" && computerChoice === "Paper") {
+    
+            console.log(`You Win this round! ${humanChoice} beats ${computerChoice}!`);
+            humanScore += 1;
+    
+        } else {
+    
+            console.log(`You Lose this round! ${computerChoice} beats ${humanChoice}!`);
+            computerScore += 1;
+        }
+    
+        console.log(`The current score is: \nPlayer ${humanScore} x ${computerScore} Computer`);
+        roundNumber += 1;
+    
+        return
+    
+    }
 
-    console.log(`Round number ${roundNumber}`)
-    console.log(`Human's choice is: ${humanChoice}`)
-    console.log(`Computer's choice is: ${computerChoice}`)
+    playRound(getHumanChoice(), getComputerChoice());
+    playRound(getHumanChoice(), getComputerChoice());
+    playRound(getHumanChoice(), getComputerChoice());
+    playRound(getHumanChoice(), getComputerChoice());
+    playRound(getHumanChoice(), getComputerChoice());
 
-    if (humanChoice === computerChoice) {
+    if (humanScore > computerScore) {
 
-        console.log(`It's a draw! You both chose ${humanChoice}!`);
+        console.log(`Congratulations, you Won! \nThe final score is: \nPlayer ${humanScore} x ${computerScore} Computer`);
 
-    } else if (humanChoice === "Rock" && computerChoice === "Scissors" ||
-        humanChoice === "Paper"  && computerChoice === "Rock" ||
-        humanChoice === "Scissors" && computerChoice === "Paper") {
+    } else if (humanScore < computerScore) {
 
-        console.log(`You Win! ${humanChoice} beats ${computerChoice}!`);
-        humanScore += 1;
+        console.log(`Oh Shoot, you Lost! \nThe final score is: \nPlayer ${humanScore} x ${computerScore} Computer`);
 
     } else {
 
-        console.log(`You Lose! ${computerChoice} beats ${humanChoice}!`);
-        computerScore += 1;
+        console.log(`Oh Wow, it ended in a Draw! \nThe final score is: \nPlayer ${humanScore} x ${computerScore} Computer`);
+ 
     }
-
-    console.log(`The current score is: \nPlayer ${humanScore} x ${computerScore} Computer`);
-    roundNumber += 1;
 
     return
 
 }
 
-playRound(getHumanChoice(), getComputerChoice());
-
-// Create logic to play 5 rounds
+playGame();
