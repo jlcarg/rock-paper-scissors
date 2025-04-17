@@ -1,3 +1,6 @@
+let humanScore = 0;
+let computerScore = 0;
+
 // Create computer's random choice function
 function getComputerChoice () {
 
@@ -25,21 +28,21 @@ function getRandomInt (min, max) {
 
 }
 
-
-
-
 // Create user's choice function with input
 
 function  getHumanChoice () {
-    let humanChoice =  prompt("Please select between Rock, Paper and Scissors:\n").toLowerCase();
-    humanChoice = humanChoice[0].toUpperCase() + humanChoice.substring(1);
+    let humanChoice =  prompt("Please select between Rock, Paper and Scissors:\n");
+    humanChoice = humanChoice[0].toUpperCase() + humanChoice.substring(1).toLowerCase();
     return humanChoice
 }
 
 console.log(`Human's choice is: ${getHumanChoice()}`)
 console.log(`Computer's choice is: ${getComputerChoice()}`)
-// Create Function that compares both choices and returns Winner
 
-// Create logic to keep track of score
+// Write logic to play single round
+
+
+
+
 
 // Create logic to play 5 rounds
