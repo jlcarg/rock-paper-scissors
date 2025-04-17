@@ -15,6 +15,7 @@ This is the third project in The Odin Project Foundations curriculum and the fir
     - Compares the score variables after 5 rounds and declares the winner or if it ended in a draw
 4. Call playGame function
 
+[Live Preview](https://jlcarg.github.io/rock-paper-scissors/)
 
 ## Practiced skills
 
@@ -34,5 +35,5 @@ This is the third project in The Odin Project Foundations curriculum and the fir
 > The Odin Project is one of those "What I wish I had when I was learning" resources. Not everyone has access to a computer science education or the funds to attend an intensive coding school and neither of those is right for everyone anyway. This project is designed to fill in the gap for people who are trying to hack it on their own but still want a high quality education.
 
 [The Odin Project](https://www.theodinproject.com/)  
-[Project: Recipes](https://www.theodinproject.com/lessons/foundations-landing-page)
+[Project: Rock Paper Scissors](https://www.theodinproject.com/lessons/foundations-rock-paper-scissors)
 
