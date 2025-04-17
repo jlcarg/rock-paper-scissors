@@ -25,11 +25,19 @@ function getRandomInt (min, max) {
 
 }
 
-console.log(`Computer's choice is: ${getComputerChoice()}`)
+
 
 
 // Create user's choice function with input
 
+function  getHumanChoice () {
+    let humanChoice =  prompt("Please select between Rock, Paper and Scissors:\n").toLowerCase();
+    humanChoice = humanChoice[0].toUpperCase() + humanChoice.substring(1);
+    return humanChoice
+}
+
+console.log(`Human's choice is: ${getHumanChoice()}`)
+console.log(`Computer's choice is: ${getComputerChoice()}`)
 // Create Function that compares both choices and returns Winner
 
 // Create logic to keep track of score
