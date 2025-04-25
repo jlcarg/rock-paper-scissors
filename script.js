@@ -24,72 +24,96 @@ function getComputerChoice () {
 
 }
 
-function  getHumanChoice () {
 
-    let humanChoice =  prompt("Please select between Rock, Paper and Scissors:");
-    humanChoice = humanChoice[0].toUpperCase() + humanChoice.substring(1).toLowerCase();
-    return humanChoice
-
-}
 
 function playGame() {
 
     let humanScore = 0;
     let computerScore = 0;
     let roundNumber = 1;
+    let scoreText = document.querySelector('.score');
+
+    function checkWinner() {
+        if (humanScore > 4) return true;
+        else if (computerScore > 4) return true;
+        else return false;
+    }
 
     function playRound (humanChoice, computerChoice) {
 
-        console.log(`Round number ${roundNumber}`)
         console.log(`Human's choice is: ${humanChoice}`)
         console.log(`Computer's choice is: ${computerChoice}`)
+
+        let battlegroundText = document.querySelector('.battleground');
+        let roundText = document.createElement("p");
     
         if (humanChoice === computerChoice) {
     
             console.log(`It's a draw! You both chose ${humanChoice}!`);
+            roundText.textContent = `Round ${roundNumber}: It's a draw! You both chose ${humanChoice}!`;
+            battlegroundText.appendChild(roundText);
     
         } else if (humanChoice === "Rock" && computerChoice === "Scissors" ||
             humanChoice === "Paper"  && computerChoice === "Rock" ||
             humanChoice === "Scissors" && computerChoice === "Paper") {
     
             console.log(`You Win this round! ${humanChoice} beats ${computerChoice}!`);
-            humanScore += 1;
+            roundText.textContent = `Round ${roundNumber}: You Win this round! ${humanChoice} beats ${computerChoice}!`;
+            battlegroundText.appendChild(roundText);
+            humanScore++;
     
         } else {
     
             console.log(`You Lose this round! ${computerChoice} beats ${humanChoice}!`);
-            computerScore += 1;
+            roundText.textContent = `Round ${roundNumber}: You Lose this round! ${computerChoice} beats ${humanChoice}!`;
+            battlegroundText.appendChild(roundText);
+            computerScore++;
+
         }
-    
-        console.log(`The current score is: \nPlayer ${humanScore} x ${computerScore} Computer`);
-        roundNumber += 1;
+
+        scoreText.textContent = `Player ${humanScore} x ${computerScore} Machine`
+        roundNumber++;
     
         return
     
     }
+    
+    let playerButtons = document.querySelectorAll(".button");
+    let playerOptions = document.querySelector('.player-choice-box');
+    
+    playerButtons.forEach((button) => {
+        let playerChoice = button.textContent;
+        button.addEventListener("click", () => {
 
-    playRound(getHumanChoice(), getComputerChoice());
-    playRound(getHumanChoice(), getComputerChoice());
-    playRound(getHumanChoice(), getComputerChoice());
-    playRound(getHumanChoice(), getComputerChoice());
-    playRound(getHumanChoice(), getComputerChoice());
+            playRound(playerChoice, getComputerChoice())
 
-    if (humanScore > computerScore) {
+                if (checkWinner()) {
 
-        console.log(`Congratulations, you Won! \nThe final score is: \nPlayer ${humanScore} x ${computerScore} Computer`);
+                const winnerText = document.createElement("div");
+                winnerText.classList.add("winner-msg");
+                scoreText.remove();
 
-    } else if (humanScore < computerScore) {
+                    if (humanScore > 4) {
 
-        console.log(`Oh Shoot, you Lost! \nThe final score is: \nPlayer ${humanScore} x ${computerScore} Computer`);
+                        winnerText.textContent = `Congratulations, you Won! \nThe final score is: \nPlayer ${humanScore} x ${computerScore} Computer`;
+                        playerOptions.replaceWith(winnerText);
+                        
+                        return;
+                
+                    } else {
 
-    } else {
+                        winnerText.textContent = `Oh Shoot, you Lost! \nThe final score is: \nPlayer ${humanScore} x ${computerScore} Computer`;
+                        playerOptions.replaceWith(winnerText);
 
-        console.log(`Oh Wow, it ended in a Draw! \nThe final score is: \nPlayer ${humanScore} x ${computerScore} Computer`);
- 
-    }
+                        return;
+                    }
 
-    return
-
+                }
+        
+            }
+)
+})
+    
 }
 
 playGame();
