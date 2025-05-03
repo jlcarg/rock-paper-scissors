@@ -1,5 +1,7 @@
 # rock-paper-scissors
 
+## Version One
+
 This is the third project in The Odin Project Foundations curriculum and the first using Javascript. It is a Rock Paper Scissors game using only the console. 
 
 1. Declare getComputerChoice function that gets a random number between 1 and 3 included. This number is then utilized to determine the computer choice: 1 = Rock, 2 = Paper, and 3 = Scissors. This function returns a variable that represents the computer's choice.
@@ -14,6 +16,10 @@ This is the third project in The Odin Project Foundations curriculum and the fir
     - Call 5 times the playRound function passing the returned values from invoking the getHumanChoice and getComputerChoice as the 2 arguments
     - Compares the score variables after 5 rounds and declares the winner or if it ended in a draw
 4. Call playGame function
+
+## Version Two
+
+After going through the first lesson on DOM Manipulation, we were tasked to add a basic UI to it. 
 
 [Live Preview](https://jlcarg.github.io/rock-paper-scissors/)
 
